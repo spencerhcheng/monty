@@ -18,21 +18,20 @@ int main(int argc, char **argv)
 	/* FILE *file; */
 	cache_t *cache;
 
-	cache = malloc(sizeof(cache_t));
-
 	/* check only one arg passed (other than ./monty */
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	cache = malloc(sizeof(cache_t));
 	head = NULL;
 
 	/* open the file provided as argument */
 	cache->file = fopen(argv[1], "r");
-	/* file = fopen(argv[1], "r"); */
 	if (cache->file == NULL)
 	{
+		free(cache);
 		raise_file_error(argv[1]);
 	}
 	line_number = 0;
@@ -54,7 +53,6 @@ int main(int argc, char **argv)
 	free(line);
 	fclose(cache->file);
 	free(cache);
-	
 	free_stack(head);
 
 	return (0);

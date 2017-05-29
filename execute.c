@@ -4,12 +4,12 @@
  * execute - calls a function based on op code
  * @file: pointer to monty (.m) source file
  * @head: double pointer to first node in a doubly linked stack_t list
- * @line_number: Monty source file
+ * @line_num: Monty source file
  * @line: line buffer with op_code
  * Return: 0 on success; -1 on fail
  */
 
-int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_number)
+int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_num)
 {
 
 	instruction_t operations[] = {
@@ -37,7 +37,7 @@ int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_number
 	if (_strncmp(clean_line, "push", _strlen("push")) == 0)
 	{
 		/* attempt to add the line to the stack/queue */
-		push_return = push(head, line, line_number); /* <---- push_and_pop.c */
+		push_return = push(head, line, line_num); /* <---- push_and_pop.c */
 		if (push_return == 0)
 			return (0);
 		else
@@ -49,18 +49,13 @@ int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_number
 		if (_strncmp(clean_line, operations[i].opcode,
 			_strlen(operations[i].opcode)) == 0)
 		{
-			/* if (strcmp(operations[i].opcode, "pint") == 0) */
-			/* { */
-			/* 	fclose(cache->file); */
-			/* 	getchar(); */
-			/* } */
 			free(line);
-			(operations[i].f)(head, line_number);
+			(operations[i].f)(head, line_num);
 			return (0);
 		}
 	}
 	fclose(cache->file);
-	printf("L%d: unknown instruction ", line_number);
+	printf("L%d: unknown instruction ", line_num);
 	while (*clean_line && (*clean_line != ' ' && *clean_line != '\t'))
 	{
 		putchar(*clean_line++);
