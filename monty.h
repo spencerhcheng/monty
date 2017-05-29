@@ -63,7 +63,7 @@ void raise_push_error(int line_number);
 void raise_op_error(unsigned int line_number, char *operation);
 
 /* execute.c */
-int execute(stack_t **head, char *line, unsigned int line_number);
+int execute(FILE *file, stack_t **head, char *line, unsigned int line_number);
 
 /* stack_manipulation.c*/
 void rotl(stack_t **head, unsigned int line_number);

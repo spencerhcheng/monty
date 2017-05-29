@@ -38,10 +38,10 @@ int main(int argc, char **argv)
 		line = NULL;
 		length = 0;
 		chars_read = getline(&line, &length, file);
-	if (chars_read > 0)
-		execute(&head, line, line_number);  /* execute.c */
-	else
-		free(line);
+		if (chars_read > 0)
+			execute(file, &head, line, line_number);  /* execute.c */
+		else
+			free(line);
 	} while (chars_read >= 0);
 
 	fclose(file);
