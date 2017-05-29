@@ -9,7 +9,7 @@
  * Return: 0 on success; -1 on fail
  */
 
-int execute(FILE *file, stack_t **head, char *line, unsigned int line_number)
+int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_number)
 {
 
 	instruction_t operations[] = {
@@ -49,12 +49,17 @@ int execute(FILE *file, stack_t **head, char *line, unsigned int line_number)
 		if (_strncmp(clean_line, operations[i].opcode,
 			_strlen(operations[i].opcode)) == 0)
 		{
+			/* if (strcmp(operations[i].opcode, "pint") == 0) */
+			/* { */
+			/* 	fclose(cache->file); */
+			/* 	getchar(); */
+			/* } */
 			free(line);
 			(operations[i].f)(head, line_number);
 			return (0);
 		}
 	}
-	fclose(file);
+	fclose(cache->file);
 	printf("L%d: unknown instruction ", line_number);
 	while (*clean_line && (*clean_line != ' ' && *clean_line != '\t'))
 	{

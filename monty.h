@@ -11,8 +11,18 @@
 #include <string.h>
 
 #define LINE_LENGTH 32
+#define BUF_LENGTH 1024
 
-FILE *file;
+/**
+ * cache - line buffer and file stream
+ *
+ *
+ */
+typedef struct cache_s
+{
+	FILE *file;
+	char *line;
+} cache_t;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,7 +59,7 @@ char *remove_leading_whitespace(char *line);
 char *goto_number(char *line);
 int count_nodes(stack_t **head);
 void free_stack(stack_t *head);
-void clean_exit(stack_t *head);
+void clean_exit(cache_t *cache, stack_t *head);
 /* char *remove_whitespace(char *line); */ /* dont think we need */
 
 /* string_functions.c */
@@ -70,7 +80,7 @@ void raise_push_error(int line_number);
 void raise_op_error(stack_t **head, unsigned int line_number, char *operation);
 
 /* execute.c */
-int execute(FILE *file, stack_t **head, char *line, unsigned int line_number);
+int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_number);
 
 /* stack_manipulation.c*/
 void rotl(stack_t **head, unsigned int line_number);
@@ -96,5 +106,10 @@ void queue(stack_t **head, unsigned int line_number);
 
 /* add_node.c */
 stack_t *add_node(stack_t **head, const int n);
+
+/* getline.c */
+ssize_t _getline(char **buf, size_t *size, int file_strm);
+void flush_buffer(char *buffer, size_t size);
+void fill_buffer(char **buf, size_t *size, char c, size_t index);
 
 #endif

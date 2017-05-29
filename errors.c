@@ -39,7 +39,7 @@ void raise_op_error(stack_t **head, unsigned int line_number, char *operation)
 	if (_strcmp(operation, "div_zero") == 0)
 		printf("L%d: division by zero\n", line_number);
 
-	fclose(file);
+	/* fclose(file); */
 	free_stack(*head);
 	exit(EXIT_FAILURE);
 }

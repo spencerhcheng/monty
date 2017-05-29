@@ -108,9 +108,10 @@ void free_stack(stack_t *head)
  * Return: void;
  */
 
-void clean_exit(stack_t *head)
+void clean_exit(cache_t *cache, stack_t *head)
 {
 	free_stack(head);
-	fclose(file);
+	fclose(cache->file);
+	free(cache);
 	exit(EXIT_FAILURE);
 }

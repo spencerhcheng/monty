@@ -1,5 +1,6 @@
 #include "monty.h"
 
+
 /**
  * main - entry point for Monty file interpreter
  * @argc: argument count
@@ -13,7 +14,11 @@ int main(int argc, char **argv)
 	ssize_t chars_read;
 	char *line;
 	size_t length;
-	int exec_return = 0;
+	int exec_return = -1; /* TEST: was 0 */
+	/* FILE *file; */
+	cache_t *cache;
+
+	cache = malloc(sizeof(cache_t));
 
 	/* check only one arg passed (other than ./monty */
 	if (argc != 2)
@@ -24,26 +29,33 @@ int main(int argc, char **argv)
 	head = NULL;
 
 	/* open the file provided as argument */
-	file = fopen(argv[1], "r");
-	if (file == NULL)
+	cache->file = fopen(argv[1], "r");
+	/* file = fopen(argv[1], "r"); */
+	if (cache->file == NULL)
+	{
 		raise_file_error(argv[1]);
+	}
 	line_number = 0;
 	/* call execute() on each  line */
 	do {
 		++line_number;
 		line = NULL;
 		length = 0;
-		chars_read = getline(&line, &length, file);
+		chars_read = getline(&line, &length, cache->file);
 		if (chars_read > 0)
 		{
-			exec_return = execute(file, &head, line, line_number);
+
+			exec_return = execute(cache, &head, line, line_number);
 			if (exec_return != 0)
-				clean_exit(head);
+				clean_exit(cache, head);
 		}
 	} while (chars_read >= 0);
 
 	free(line);
-	fclose(file);
+	fclose(cache->file);
+	free(cache);
+	
 	free_stack(head);
+
 	return (0);
 }
