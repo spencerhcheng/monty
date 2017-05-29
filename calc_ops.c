@@ -13,9 +13,7 @@ void add(stack_t **head, unsigned int line_number)
 
 	if (count_nodes(head) < 2)
 	{
-		/* raise_op_error(head, line_number, "add"); */
 		printf("L%d: can't add, stack too short\n", line_number);
-		/* fclose(file); */
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
@@ -39,7 +37,7 @@ void sub(stack_t **head, unsigned int line_number)
 
 	if (count_nodes(head) < 2)
 	{
-		raise_op_error(head, line_number, "sub");
+		raise_op_error(head, line_number, "sub\n");
 		/* printf("L%d: can't add, stack too short", line_number); */
 		/* free_stack(*head); */
 		/* exit(EXIT_FAILURE); */
@@ -64,7 +62,7 @@ void divide(stack_t **head, unsigned int line_number)
 	stack_t *temp;
 
 	if (count_nodes(head) < 2)
-		raise_op_error(head, line_number, "div");
+		raise_op_error(head, line_number, "div\n");
 
 	temp = *head;
 	result = (temp)->next->n / (temp)->n;
