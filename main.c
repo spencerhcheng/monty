@@ -17,8 +17,6 @@ int main(int argc, char **argv)
 	int exec_return = -1; /* TEST: was 0 */
 	cache_t *cache;
 
-	putchar('s');
-	
 	if (argc != 2)
 		raise_input_error();
 	cache = malloc(sizeof(cache_t));
