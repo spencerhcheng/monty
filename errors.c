@@ -3,6 +3,7 @@
 /**
  * raise_op_error - prints an error for inadequate number of nodes in
  * doubly linked stack_t list
+ * @head: double pointer to a doubly linked stack_t list
  * @line_number: Monty file line number with invalid operation
  * @operation: name of operation function
  * Return: void
