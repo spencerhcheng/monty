@@ -2,7 +2,7 @@
 
 /**
  * execute - calls a function based on op code
- * @file: pointer to monty (.m) source file
+ * @cache: holds file stream
  * @head: double pointer to first node in a doubly linked stack_t list
  * @line_num: Monty source file
  * @line: line buffer with op_code
