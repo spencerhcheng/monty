@@ -30,7 +30,7 @@ int execute(FILE *file, stack_t **head, char *line, unsigned int line_number)
 	if (clean_line == NULL)
 	{
 		free(line);
-		return (1);
+		return (0);
 	}
 
 	/* check to see if line begins with "push" */

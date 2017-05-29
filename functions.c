@@ -99,6 +99,7 @@ void free_stack(stack_t *head)
 		head = head->next;
 		free(temp_node);
 	}
+
 }
 
 /**

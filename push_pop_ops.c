@@ -22,7 +22,6 @@ int push(stack_t **head, char *line, unsigned int line_number)
 		raise_push_error(line_number);
 		return (-1);
 	};
-
 	new_node = add_node(head, atoi(n));
 	free(line);
 	if (new_node == NULL)
