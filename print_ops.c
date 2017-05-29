@@ -33,13 +33,16 @@ void pall(stack_t **head, unsigned int line_number)
 
 void pint(stack_t **head, unsigned int line_number)
 {
-	stack_t *temp;
 
-	if (head == NULL || *head == NULL)
-		raise_op_error(line_number, "pint");
+	if (!head || !*head)
+	{
+		printf("L%d: can't pint, stack empty\n", line_number);
+		free_stack(*head);
+		fclose(file);
+		exit(EXIT_FAILURE);
+	}
 
-	temp = *head;
-	printf("%d\n", temp->n);
+	printf("%d\n", (*head)->n);
 }
 
 /**

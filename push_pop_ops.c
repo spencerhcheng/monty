@@ -29,7 +29,6 @@ int push(stack_t **head, char *line, unsigned int line_number)
 		puts("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-
 	return (0);
 }
 
@@ -45,7 +44,7 @@ void pop(stack_t **head, unsigned int line_number)
 	stack_t *temp;
 
 	if (head == NULL || *head == NULL)
-		raise_op_error(line_number, "pop");
+		raise_op_error(head, line_number, "pop");
 
 	temp = *head;
 	if (temp->next == NULL)

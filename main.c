@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	ssize_t chars_read;
 	char *line;
 	size_t length;
-	FILE *file;
+	/* FILE *file; */
 
 	/* check only one arg passed (other than ./monty */
 	if (argc != 2)

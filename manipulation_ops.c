@@ -38,7 +38,7 @@ void swap(stack_t **head, unsigned int line_number)
 	int temp_n;
 
 	if (count_nodes(head) < 2)
-		raise_op_error(line_number, "swap");
+		raise_op_error(head, line_number, "swap");
 
 	temp_n = (*head)->next->n;
 	(*head)->next->n = (*head)->n;

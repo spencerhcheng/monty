@@ -93,11 +93,10 @@ void free_stack(stack_t *head)
 {
 	stack_t *temp_node;
 
-	while (head)
+	while (head != NULL)
 	{
 		temp_node = head;
 		head = head->next;
 		free(temp_node);
 	}
-	head = NULL;
 }

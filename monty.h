@@ -1,12 +1,18 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 
 #define LINE_LENGTH 32
+
+FILE *file;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -60,7 +66,7 @@ void nop(stack_t **head, unsigned int line_number);
 void raise_input_error(void);
 void raise_file_error(char *file_name);
 void raise_push_error(int line_number);
-void raise_op_error(unsigned int line_number, char *operation);
+void raise_op_error(stack_t **head, unsigned int line_number, char *operation);
 
 /* execute.c */
 int execute(FILE *file, stack_t **head, char *line, unsigned int line_number);

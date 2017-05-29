@@ -49,10 +49,12 @@ int execute(FILE *file, stack_t **head, char *line, unsigned int line_number)
 		if (_strncmp(clean_line, operations[i].opcode,
 			_strlen(operations[i].opcode)) == 0)
 		{
-			free(line), (operations[i].f)(head, line_number);
+			free(line);
+			(operations[i].f)(head, line_number);
 			return (0);
 		}
 	}
+	fclose(file);
 	printf("L%d: unknown instruction ", line_number);
 	while (*clean_line && (*clean_line != ' ' && *clean_line != '\t'))
 	{
@@ -60,7 +62,6 @@ int execute(FILE *file, stack_t **head, char *line, unsigned int line_number)
 	}
 	putchar('\n');
 	free(line);
-	fclose(file);
 	exit(EXIT_FAILURE);
 
 return (-1);

@@ -8,15 +8,17 @@
  * Return: void
  */
 
-void raise_op_error(unsigned int line_number, char *operation)
+void raise_op_error(stack_t **head, unsigned int line_number, char *operation)
 {
 	char *swap_error = "L%d: can't swap, stack too short\n";
-	char *add_error = "L%d: can't add, stack too short";
-	char *sub_error = ":%d: can't sub, stack too short";
-	char *div_error = ":%d: can't div, stack too short";
+	char *add_error = "L%d: can't add, stack too short\n";
+	char *sub_error = "L:%d: can't sub, stack too short\n";
+	char *div_error = "L:%d: can't div, stack too short\n";
 
 	if (_strcmp(operation, "pint") == 0)
+	{
 		printf("L%d: can't pint, stack empty\n", line_number);
+	}
 
 	if (_strcmp(operation, "pop") == 0)
 		printf("L%d: can't pop an empty stack\n", line_number);
@@ -36,6 +38,7 @@ void raise_op_error(unsigned int line_number, char *operation)
 	if (_strcmp(operation, "div_zero") == 0)
 		printf("L%d: division by zero\n", line_number);
 
+	free_stack(*head);
 	exit(EXIT_FAILURE);
 }
 
