@@ -104,7 +104,6 @@ void free_stack(stack_t *head)
 
 /**
  * clean_exit - closes open file stream and frees doubly linked stack_t list
- * @file: file stream to close
  * @head: stack to free
  * Return: void;
  */

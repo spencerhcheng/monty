@@ -14,7 +14,6 @@ int main(int argc, char **argv)
 	char *line;
 	size_t length;
 	int exec_return = 0;
-	/* FILE *file; */
 
 	/* check only one arg passed (other than ./monty */
 	if (argc != 2)
@@ -27,12 +26,8 @@ int main(int argc, char **argv)
 	/* open the file provided as argument */
 	file = fopen(argv[1], "r");
 	if (file == NULL)
-	{
-		printf("Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		raise_file_error(argv[1]);
 	line_number = 0;
-
 	/* call execute() on each  line */
 	do {
 		++line_number;
@@ -43,7 +38,6 @@ int main(int argc, char **argv)
 		{
 			exec_return = execute(file, &head, line, line_number);
 			if (exec_return != 0)
-			/* free(line); */
 				clean_exit(head);
 		}
 	} while (chars_read >= 0);
