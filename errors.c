@@ -16,25 +16,25 @@ void raise_op_error(unsigned int line_number, char *operation)
 	char *div_error = ":%d: can't div, stack too short";
 
 	if (_strcmp(operation, "pint") == 0)
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		printf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
 
 	if (_strcmp(operation, "pop") == 0)
-		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		printf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
 
 	if (_strcmp(operation, "swap") == 0)
-		dprintf(STDERR_FILENO, swap_error, line_number);
+		printf(STDERR_FILENO, swap_error, line_number);
 
 	if (_strcmp(operation, "add") == 0)
-		dprintf(STDERR_FILENO, add_error, line_number);
+		printf(STDERR_FILENO, add_error, line_number);
 
 	if (_strcmp(operation, "sub") == 0)
-		dprintf(STDERR_FILENO, sub_error, line_number);
+		printf(STDERR_FILENO, sub_error, line_number);
 
 	if (_strcmp(operation, "div") == 0)
-		dprintf(STDERR_FILENO, div_error, line_number);
+		printf(STDERR_FILENO, div_error, line_number);
 
 	if (_strcmp(operation, "div_zero") == 0)
-		dprintf(STDERR_FILENO, "L%d: division by zero\n", line_number);
+		printf(STDERR_FILENO, "L%d: division by zero\n", line_number);
 
 	exit(EXIT_FAILURE);
 }
@@ -46,7 +46,7 @@ void raise_op_error(unsigned int line_number, char *operation)
 
 void raise_input_error(void)
 {
-	dprintf(STDERR_FILENO, "USAGE: monty file\n");
+	printf(STDERR_FILENO, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -58,7 +58,7 @@ void raise_input_error(void)
 
 void raise_file_error(char *file_name)
 {
-	dprintf(STDERR_FILENO, "Error: Can't open file %s\n", file_name);
+	printf(STDERR_FILENO, "Error: Can't open file %s\n", file_name);
 	exit(EXIT_FAILURE);
 }
 /**
@@ -69,6 +69,6 @@ void raise_file_error(char *file_name)
 
 void raise_push_error(int line_number)
 {
-	dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+	printf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
 }
