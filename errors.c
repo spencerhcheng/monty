@@ -16,25 +16,25 @@ void raise_op_error(unsigned int line_number, char *operation)
 	char *div_error = ":%d: can't div, stack too short";
 
 	if (_strcmp(operation, "pint") == 0)
-		printf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
 
 	if (_strcmp(operation, "pop") == 0)
-		printf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", line_number);
 
 	if (_strcmp(operation, "swap") == 0)
-		printf(STDERR_FILENO, swap_error, line_number);
+		dprintf(STDERR_FILENO, swap_error, line_number);
 
 	if (_strcmp(operation, "add") == 0)
-		printf(STDERR_FILENO, add_error, line_number);
+		dprintf(STDERR_FILENO, add_error, line_number);
 
 	if (_strcmp(operation, "sub") == 0)
-		printf(STDERR_FILENO, sub_error, line_number);
+		dprintf(STDERR_FILENO, sub_error, line_number);
 
 	if (_strcmp(operation, "div") == 0)
-		printf(STDERR_FILENO, div_error, line_number);
+		dprintf(STDERR_FILENO, div_error, line_number);
 
 	if (_strcmp(operation, "div_zero") == 0)
-		printf(STDERR_FILENO, "L%d: division by zero\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: division by zero\n", line_number);
 
 	exit(EXIT_FAILURE);
 }
