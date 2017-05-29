@@ -46,7 +46,7 @@ void raise_op_error(unsigned int line_number, char *operation)
 
 void raise_input_error(void)
 {
-	printf(STDERR_FILENO, "USAGE: monty file\n");
+	dprintf(STDERR_FILENO, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -58,7 +58,7 @@ void raise_input_error(void)
 
 void raise_file_error(char *file_name)
 {
-	printf(STDERR_FILENO, "Error: Can't open file %s\n", file_name);
+	dprintf(STDERR_FILENO, "Error: Can't open file %s\n", file_name);
 	exit(EXIT_FAILURE);
 }
 /**
@@ -69,6 +69,6 @@ void raise_file_error(char *file_name)
 
 void raise_push_error(int line_number)
 {
-	printf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
+	dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
 }
