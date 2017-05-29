@@ -39,6 +39,7 @@ void raise_op_error(stack_t **head, unsigned int line_number, char *operation)
 	if (_strcmp(operation, "div_zero") == 0)
 		printf("L%d: division by zero\n", line_number);
 
+	fclose(file);
 	free_stack(*head);
 	exit(EXIT_FAILURE);
 }
@@ -74,5 +75,4 @@ void raise_file_error(char *file_name)
 void raise_push_error(int line_number)
 {
 	printf("L%d: usage: push integer\n", line_number);
-	exit(EXIT_FAILURE);
 }

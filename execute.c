@@ -41,7 +41,7 @@ int execute(FILE *file, stack_t **head, char *line, unsigned int line_number)
 		if (push_return == 0)
 			return (0);
 		else
-			return (-1);
+			return (-1); /* return fail to main */
 	}
 	/* check for clean_line in the operations[] array above */
 	for (i = 0; operations[i].opcode; ++i)

@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 	ssize_t chars_read;
 	char *line;
 	size_t length;
+	int exec_return = 0;
 	/* FILE *file; */
 
 	/* check only one arg passed (other than ./monty */
@@ -39,9 +40,11 @@ int main(int argc, char **argv)
 		length = 0;
 		chars_read = getline(&line, &length, file);
 		if (chars_read > 0)
-			execute(file, &head, line, line_number);  /* execute.c */
-		else
+			exec_return = execute(file, &head, line, line_number);
+		if (exec_return == 0)
 			free(line);
+		else
+			clean_exit(head);
 	} while (chars_read >= 0);
 
 	fclose(file);

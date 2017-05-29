@@ -17,8 +17,9 @@ int push(stack_t **head, char *line, unsigned int line_number)
 	n = goto_number(line); /* <---- functions.c */
 	if (n == NULL)
 	{
-		printf("L%d: usage: push integer\n", line_number);
+		/* dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number); */
 		free(line);
+		raise_push_error(line_number);
 		return (-1);
 	};
 

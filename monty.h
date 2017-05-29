@@ -49,6 +49,7 @@ char *remove_leading_whitespace(char *line);
 char *goto_number(char *line);
 int count_nodes(stack_t **head);
 void free_stack(stack_t *head);
+void clean_exit(stack_t *head);
 /* char *remove_whitespace(char *line); */ /* dont think we need */
 
 /* string_functions.c */

@@ -100,3 +100,17 @@ void free_stack(stack_t *head)
 		free(temp_node);
 	}
 }
+
+/**
+ * clean_exit - closes open file stream and frees doubly linked stack_t list
+ * @file: file stream to close
+ * @head: stack to free
+ * Return: void;
+ */
+
+void clean_exit(stack_t *head)
+{
+	free_stack(head);
+	fclose(file);
+	exit(EXIT_FAILURE);
+}
