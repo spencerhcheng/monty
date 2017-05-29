@@ -60,7 +60,6 @@ int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_num)
 	{
 		putchar(*clean_line++);
 	}
-	putchar('\n');
 	free(line);
 	exit(EXIT_FAILURE);
 
