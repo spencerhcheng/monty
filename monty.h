@@ -102,9 +102,4 @@ void queue(stack_t **head, unsigned int line_number);
 /* add_node.c */
 stack_t *add_node(stack_t **head, const int n);
 
-/* getline.c */
-ssize_t _getline(char **buf, size_t *size, int file_strm);
-void flush_buffer(char *buffer, size_t size);
-void fill_buffer(char **buf, size_t *size, char c, size_t index);
-
 #endif
