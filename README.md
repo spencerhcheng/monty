@@ -15,16 +15,25 @@ The focus of this project is to learn:
 * gcc standard C90
 
 ## New commands / functions used:
-``TODO``,
+N/A
 
 ## Helpful Links
 * http://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files-in-c
 * https://github.com/blog/2104-working-with-submodules
 
 ## File Descriptions
-- `libholberton.so`: dynamic library containing various functions
-- `holberton.h`: header file containing prototypes for functions used for this task
-- `1-create_dynamic_lib.sh`: script that creates a dynamic library called liball.c files in the current directory
+- `main.c`: entry point for Monty bytecode interpreter
+- `execute.c`: executes the requested bytecode operation
+- `functions.c`: contains helper functions for the Monty bytecode interpreter
+- `calc_ops.c`: functions for executing math bytecode operations.
+- `error.c`: functions for raising various errors and in some instances exiting with code.
+- `print_ops`: executes various bytecode operations associated with printing node elements of the stack
+- `push_pop_ops.c`: bytecode operations push, pop and nop
+- `manipulation_ops.c`: bytecode operations that move stack elemnts to a different position
+- `stack_queue.c`: (not implemented) bytecode operations to move the head pointer to either the top or bottom of the stack
+- `add_node.c`: adds an element to the top of the stack
+- `string_functions.c`: various string manipulation functions
+- `monty.h`: header file for the Monty bytecode interpreter
 
 ## Author
 Stuart Kuredjian

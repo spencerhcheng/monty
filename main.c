@@ -1,12 +1,12 @@
 #include "monty.h"
 
-
 /**
  * main - entry point for Monty file interpreter
  * @argc: argument count
  * @argv: argument vector
  * Return: always return 0
  */
+
 int main(int argc, char **argv)
 {
 	stack_t *head;
@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 		raise_input_error();
 	cache = malloc(sizeof(cache_t));
 	head = NULL;
-
 	cache->file = fopen(argv[1], "r");
 	if (cache->file == NULL)
 	{

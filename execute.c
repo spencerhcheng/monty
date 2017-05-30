@@ -11,7 +11,8 @@
 
 int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_num)
 {
-
+	int i, push_return;
+	char *clean_line;
 	instruction_t operations[] = {
 		{"pall", pall},   {"pint", pint},
 		{"pchar", pchar}, {"pstr", pstr},
@@ -22,8 +23,6 @@ int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_num)
 		{"stack", stack}, {"queue", queue},
 		{NULL, NULL}
 	};
-	int i, push_return;
-	char *clean_line;
 
 	/* remove extraneous whitespace from line */
 	clean_line = remove_leading_whitespace(line); /* <---helpers.c */
@@ -33,34 +32,28 @@ int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_num)
 		return (0);
 	}
 
-	/* check to see if line begins with "push" */
+	/* if opcode is "push" call push() */
 	if (_strncmp(clean_line, "push", _strlen("push")) == 0)
 	{
-		/* attempt to add the line to the stack/queue */
-		push_return = push(head, line, line_num); /* <---- push_and_pop.c */
+		push_return = push(head, line, line_num);
 		if (push_return == 0)
 			return (0);
 		else
 			return (-1); /* return fail to main */
 	}
-	/* check for clean_line in the operations[] array above */
+	/* fetch function from operations instruction_t list */
 	for (i = 0; operations[i].opcode; ++i)
-	{
 		if (_strncmp(clean_line, operations[i].opcode,
-			_strlen(operations[i].opcode)) == 0)
+			     _strlen(operations[i].opcode)) == 0)
 		{
 			free(line);
 			(operations[i].f)(head, line_num);
 			return (0);
 		}
-	}
 	fclose(cache->file);
 	printf("L%d: unknown instruction ", line_num);
 	while (*clean_line && (*clean_line != ' ' && *clean_line != '\t'))
-	{
 		putchar(*clean_line++);
-	}
-
 	free(line);
 	exit(EXIT_FAILURE);
 

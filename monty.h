@@ -1,17 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 
 #define LINE_LENGTH 32
-#define BUF_LENGTH 1024
 
 /**
  * cache - line buffer and file stream
@@ -82,19 +77,19 @@ void raise_op_error(stack_t **head, unsigned int line_number, char *operation);
 /* execute.c */
 int execute(cache_t *cache, stack_t **head, char *line, unsigned int line_num);
 
-/* stack_manipulation.c*/
+/* manipulation_ops.c*/
 void rotl(stack_t **head, unsigned int line_number);
 void rotr(stack_t **head, unsigned int line_number);
 void swap(stack_t **head, unsigned int line_number);
 
-/* calculations.c */
+/* calc_ops.c */
 void add(stack_t **head, unsigned int line_number);
 void sub(stack_t **head, unsigned int line_number);
 void divide(stack_t **head, unsigned int line_number);
 void mul(stack_t **head, unsigned int line_number);
 void mod(stack_t **head, unsigned int line_number);
 
-/* print_stack */
+/* print_ops */
 void pall(stack_t **head, unsigned int line_number);
 void pint(stack_t **head, unsigned int line_number);
 void pchar(stack_t **head, unsigned int line_number);
