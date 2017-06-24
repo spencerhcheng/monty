@@ -37,10 +37,10 @@ N/A
 
 ## Authors
 Stuart Kuredjian
-twitter: @stueygk
+@stueygk
 
-Spencer
-twitter: @spencerhcheng
+Spencer Cheng
+@spencerhcheng
 
 ## License
 Public Domain, no copyright protection
