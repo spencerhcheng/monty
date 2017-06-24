@@ -35,12 +35,12 @@ N/A
 - `string_functions.c`: various string manipulation functions
 - `monty.h`: header file for the Monty bytecode interpreter
 
-## Author
+## Authors
 Stuart Kuredjian
-
 twitter: @stueygk
 
-linkdin: https://www.linkedin.com/in/stuart-kuredjian-8100a273/
+Spencer
+twitter: @spencerhcheng
 
 ## License
 Public Domain, no copyright protection
